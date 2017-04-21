@@ -1,0 +1,70 @@
+object FrameGrid: TFrameGrid
+  Left = 0
+  Top = 0
+  Width = 443
+  Height = 190
+  Align = alTop
+  Color = clWindow
+  ParentColor = False
+  TabOrder = 0
+  object Panel1: TPanel
+    Left = 0
+    Top = 170
+    Width = 443
+    Height = 20
+    Align = alBottom
+    BevelOuter = bvNone
+    ParentColor = True
+    TabOrder = 0
+    object lblGrdCell: TLabel
+      Left = 15
+      Top = 0
+      Width = 428
+      Height = 20
+      Align = alClient
+      Caption = '...'
+      Font.Charset = RUSSIAN_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object lblTtlCell: TLabel
+      Left = 0
+      Top = 0
+      Width = 15
+      Height = 20
+      Align = alLeft
+      Caption = '...'
+      Font.Charset = RUSSIAN_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+  end
+  object grd1: TStringGrid
+    Left = 0
+    Top = 0
+    Width = 443
+    Height = 170
+    Align = alClient
+    BorderStyle = bsNone
+    ColCount = 2
+    DefaultColWidth = 40
+    DefaultRowHeight = 20
+    FixedCols = 0
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = []
+    GridLineWidth = 0
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goEditing]
+    ParentFont = False
+    TabOrder = 1
+    OnSelectCell = grd1SelectCell
+  end
+end

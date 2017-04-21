@@ -1,0 +1,74 @@
+//------------------------------------------------------------------------------
+#ifndef MY_RESULT_VALUE_HEADER_INCLUDED_______
+#define MY_RESULT_VALUE_HEADER_INCLUDED_______
+//------------------------------------------------------------------------------
+//#include <algorithm>
+//------------------------------------------------------------------------------
+
+
+class ResultVal
+{
+public:
+    explicit ResultVal() : val(0), defined(0) {}
+    ResultVal(double v, bool def) : val(v), defined(def) {}
+    ResultVal(const ResultVal &other)
+    {
+        SetFromOther(other);
+    }
+    ResultVal(double v) : val(v), defined(true) {}
+
+    bool Defined() const {return defined;}
+    double Val() const { return val; }
+
+    ResultVal&  operator=(const ResultVal &other)
+    {
+        SetFromOther(other);
+        return *this;
+    }
+    ResultVal&  operator=(double otherVal)
+    {
+        SetFromOther(otherVal);
+        return *this;
+    }
+
+    ResultVal operator+(const ResultVal& other) const
+    { return ResultVal(val + other.val, defined && other.defined); }
+
+    ResultVal operator-(const ResultVal& other) const
+    { return ResultVal(val - other.val, defined && other.defined); }
+
+    ResultVal operator*(const ResultVal& other) const
+    { return ResultVal(val * other.val, defined && other.defined); }
+
+    ResultVal operator/(const ResultVal& other) const
+    { return ResultVal(val / other.val, defined && other.defined); }
+
+private:
+    double val;
+    bool defined;
+    void SetFromOther(const ResultVal& other)
+    {
+        val = other.val;
+        defined = other.defined;
+    }
+    void SetFromOther(double otherVal)
+    {
+        val = otherVal;
+        defined = true;
+    }
+    friend bool operator==(const ResultVal& left, const ResultVal& right)
+};
+
+bool operator==(const ResultVal& left, const ResultVal& right)
+{
+    return left.val == right.val && left.defined && right.defined;
+}
+
+
+
+
+
+
+//------------------------------------------------------------------------------
+#endif
+//------------------------------------------------------------------------------
